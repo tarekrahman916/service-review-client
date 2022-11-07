@@ -1,9 +1,12 @@
 import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./Router/Routes/Routes";
+import "flowbite";
 
 function App() {
   return (
     <div>
-      <h2>Hello World</h2>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
