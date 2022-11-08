@@ -28,15 +28,15 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         form.reset();
-      });
+      })
+      .catch((err) => console.error(err.message));
   };
 
   return (
-    <div className="w-full p-5">
+    <div className="w-full p-5 ">
       <h2 className="text-3xl text-center">Add Service</h2>
-      <div className="md:w-1/2 mx-auto  border border-gray-600 p-5 rounded-lg shadow-md">
+      <div className="md:w-1/2 mx-auto  border-2 border-gray-400 p-5 rounded-lg shadow-md ">
         <form onSubmit={handleAddService} className="p-5">
           <div className="mb-6">
             <label
