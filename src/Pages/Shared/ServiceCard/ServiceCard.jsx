@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const ServiceCard = ({ service }) => {
   const { _id, name, img, price, ratings, description } = service;
   return (
-    <div class="  rounded-lg border   bg-gray-900 border-gray-700 shadow-lg text-gray-100">
+    <div class="  rounded-lg border   bg-gray-900 border-gray-700 shadow-lg text-gray-100 ">
       <Link to="#">
-        <img class="rounded-t-lg" src={img} alt="" />
+        <img className="rounded-t-lg h-72 object-cover" src={img} alt="" />
       </Link>
-      <div class="p-5">
+      <div class="p-5 ">
         <Link to="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-white">
             {name}
@@ -30,7 +30,7 @@ const ServiceCard = ({ service }) => {
         </div>
         <Link
           to={`/service/${_id}`}
-          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white  rounded-lg  focus:ring-4 focus:outline-none  bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 mt-5"
+          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white  rounded-lg  focus:ring-4 focus:outline-none  bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 mt-5 "
         >
           See Details
           <svg
