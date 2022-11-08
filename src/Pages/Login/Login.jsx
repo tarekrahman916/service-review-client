@@ -1,7 +1,13 @@
-import React from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+
+const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
+  const { providerLogin } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -9,6 +15,15 @@ const Login = () => {
     const password = form.password.value;
 
     console.log(email, password);
+  };
+
+  const googleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err.message));
   };
   return (
     <div>
@@ -28,6 +43,7 @@ const Login = () => {
         </p>
         <div className="my-6 space-y-4">
           <button
+            onClick={googleSignIn}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
