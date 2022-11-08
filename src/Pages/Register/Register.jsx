@@ -2,6 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, photoURL, email, password);
+  };
   return (
     <div>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-900 text-gray-100 mx-auto my-5">
@@ -10,13 +20,12 @@ const Register = () => {
           <hr className="w-full text-gray-400" />
         </div>
         <form
-          novalidate=""
-          action=""
+          onSubmit={handleSubmit}
           className="space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label htmlFor="name" className="block mb-2 text-sm">
                 Your name
               </label>
               <input
@@ -29,7 +38,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label htmlFor="photoURL" className="block mb-2 text-sm">
                 Photo URL
               </label>
               <input
@@ -42,7 +51,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label for="email" className="block mb-2 text-sm">
+              <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
               </label>
               <input
@@ -56,7 +65,7 @@ const Register = () => {
             </div>
             <div>
               <div className="flex justify-between mb-2">
-                <label for="password" className="text-sm">
+                <label htmlFor="password" className="text-sm">
                   Password
                 </label>
               </div>
@@ -72,7 +81,7 @@ const Register = () => {
           <div className="space-y-2">
             <div>
               <button
-                type="button"
+                type="submit"
                 className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900"
               >
                 Sign in
