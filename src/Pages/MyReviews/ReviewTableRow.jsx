@@ -1,7 +1,8 @@
 import React from "react";
 
-const ReviewTableRow = ({ review }) => {
-  const { service_name, text, author, ratings } = review;
+const ReviewTableRow = ({ review, handleDelete }) => {
+  const { _id, service_name, text, author, ratings } = review;
+
   return (
     <tr class="border-b bg-gray-900 border-gray-700">
       <th
@@ -17,7 +18,10 @@ const ReviewTableRow = ({ review }) => {
         <button class=" font-medium  text-blue-500 hover:underline mr-5">
           Edit
         </button>
-        <button class="font-medium  text-red-600 hover:underline">
+        <button
+          onClick={() => handleDelete(_id)}
+          class="font-medium  text-red-600 hover:underline"
+        >
           Delete
         </button>
       </td>

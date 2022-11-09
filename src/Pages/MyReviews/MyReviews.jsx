@@ -14,7 +14,18 @@ const MyReviews = () => {
       .then((data) => setMyReviews(data));
   }, [email]);
 
-  console.log(myReviews);
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/reviews/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const remaining = myReviews.filter((review) => review._id !== id);
+        setMyReviews(remaining);
+        alert("delete Successfully");
+      });
+  };
+
   return (
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mx-10 my-5">
       <table class="w-full  text-left text-gray-400">
@@ -37,7 +48,11 @@ const MyReviews = () => {
         </thead>
         <tbody>
           {myReviews.map((review) => (
-            <ReviewTableRow key={review._id} review={review}></ReviewTableRow>
+            <ReviewTableRow
+              key={review._id}
+              review={review}
+              handleDelete={handleDelete}
+            ></ReviewTableRow>
           ))}
         </tbody>
       </table>

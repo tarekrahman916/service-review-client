@@ -9,6 +9,12 @@ const ServiceDetails = () => {
   const service = useLoaderData();
   const { _id, img, name, description, price, ratings } = service;
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [_id]);
+
   const handleAddReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,32 +40,27 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        const newReview = [...reviews, data];
+        setReviews(newReview);
+        alert("success");
+        form.reset();
       });
   };
 
-  useEffect(() => {
-    fetch("http://localhost:5000/reviews")
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, []);
-
-  console.log(reviews);
-
   return (
     <div className="mx-2">
-      <div class="grid md:grid-cols-2  rounded-lg border shadow-md md:w-9/12 mx-auto my-5   border-gray-700 bg-gray-800 hover:bg-gray-900">
+      <div className="grid md:grid-cols-2  rounded-lg border shadow-md md:w-9/12 mx-auto my-5   border-gray-700 bg-gray-800 hover:bg-gray-900">
         <img
-          class="object-cover w-full rounded-t-lg md:h-auto  md:rounded-none md:rounded-l-lg"
+          className="object-cover w-full rounded-t-lg md:h-auto  md:rounded-none md:rounded-l-lg"
           src={img}
           alt=""
         />
-        <div class=" p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight  text-white">
+        <div className=" p-4 leading-normal">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight  text-white">
             {name}
           </h5>
-          <p class="mb-3 font-normal  text-gray-300">{description}</p>
-          <p class="mb-3 text-2xl  text-gray-300">Price: ${price}</p>
+          <p className="mb-3 font-normal  text-gray-300">{description}</p>
+          <p className="mb-3 text-2xl  text-gray-300">Price: ${price}</p>
 
           <div className="flex items-center space-x-2 text-yellow-300">
             <svg
