@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import usePageTitle from "../../hooks/usePageTitle";
 import ReviewTableRow from "./ReviewTableRow";
 
 const MyReviews = () => {
   const { user, logOut } = useContext(AuthContext);
   const { email } = user;
   const [myReviews, setMyReviews] = useState([]);
+  usePageTitle("Review");
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?email=${email}`, {
@@ -41,7 +43,7 @@ const MyReviews = () => {
 
   return (
     <div className=" relative shadow-md sm:rounded-lg mx-10 my-5 p-10 mb-28">
-      {user.email === 0 ? (
+      {myReviews.length === 0 ? (
         <div className="text-center">
           <h1 className="text-4xl text-red-500">No reviews were added</h1>
         </div>

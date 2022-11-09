@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import usePageTitle from "../../hooks/usePageTitle";
 import ReviewCard from "../Shared/RevewCard/ReviewCard";
 
 const ServiceDetails = () => {
@@ -9,6 +10,8 @@ const ServiceDetails = () => {
   const service = useLoaderData();
   const { _id, img, name, description, price, ratings } = service;
   const location = useLocation();
+
+  usePageTitle("Service Details");
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
