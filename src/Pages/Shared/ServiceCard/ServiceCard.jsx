@@ -16,7 +16,7 @@ const ServiceCard = ({ service }) => {
       </Link>
       <div className="p-5 ">
         <Link to="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight  text-white">
             {name}
           </h5>
         </Link>
