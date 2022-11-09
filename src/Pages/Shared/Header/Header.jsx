@@ -11,7 +11,7 @@ const Header = () => {
       .catch((err) => console.error(err));
   };
   return (
-    <nav className="bg-white border-gray-200 px-2 lg:mx-10 sm:px-4 py-5 rounded dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 px-2 lg:mx-10 sm:px-4 py-5 rounded dark:bg-gray-900 ">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
           <img

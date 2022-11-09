@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import ReviewCard from "../Shared/RevewCard/ReviewCard";
 
@@ -8,6 +8,7 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { _id, img, name, description, price, ratings } = service;
+  const location = useLocation();
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
@@ -44,7 +45,8 @@ const ServiceDetails = () => {
         setReviews(newReview);
         alert("success");
         form.reset();
-      });
+      })
+      .catch((err) => console.error(err));
   };
 
   return (

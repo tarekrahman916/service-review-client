@@ -3,9 +3,9 @@ import banner from "../../../assets/banner.jpg";
 
 const TopBanner = () => {
   return (
-    <div>
+    <div className="h-full">
       <section className="bg-gray-800 text-gray-100">
-        <div className="h-full">
+        <div className="h-full relative">
           <img
             src={banner}
             alt=""

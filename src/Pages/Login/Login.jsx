@@ -6,10 +6,11 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
-  const { providerLogin, setLoading } = useContext(AuthContext);
+  const { providerLogin, setLoading, logIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,14 +18,43 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    logIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        const currentUser = {
+          email: user.email,
+        };
+
+        //jwt
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("token", data.token);
+          });
+
+        navigate(from, { replace: true });
+        form.reset();
+      })
+      .catch((err) => console.error(err.message))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const googleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         navigate(from, { replace: true });
       })
       .catch((err) => console.error(err.message))

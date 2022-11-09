@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="p-4  sm:p-6 bg-gray-900 text-white">
+      <footer className="p-4  sm:p-6 bg-gray-900 text-white mt-5">
         <div className="grid grid-cols-2 lg:grid-cols-4 justify-center  text-white">
           <div className="mb-6 md:mb-0">
             <Link to="https://flowbite.com/" className="flex items-center">
