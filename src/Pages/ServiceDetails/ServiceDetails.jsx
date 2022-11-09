@@ -133,7 +133,7 @@ const ServiceDetails = () => {
             </div>
           )}
         </div>
-        <div className="grid lg:grid-cols-2 gap-8 mx-10 my-5">
+        <div className="grid lg:grid-cols-1 gap-8 mx-10 my-5">
           {reviews.map((review) => (
             <ReviewCard key={review._id} review={review}></ReviewCard>
           ))}

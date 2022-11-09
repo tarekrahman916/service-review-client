@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -10,8 +13,28 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, photoURL, email, password);
+    // console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        handleUpdateUserProfile(name, photoURL);
+        form.reset();
+      })
+      .catch((err) => console.error(err.message));
   };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((err) => console.error(err.message));
+  };
+
   return (
     <div>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-900 text-gray-100 mx-auto my-5">
