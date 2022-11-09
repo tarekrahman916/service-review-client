@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceCard = ({ service }) => {
   const { _id, name, img, price, ratings, description } = service;
   return (
     <div className="  rounded-lg border   bg-gray-900 border-gray-700 shadow-lg text-gray-100 ">
       <Link to="#">
-        <img className="rounded-t-lg h-72 object-cover" src={img} alt="" />
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img className="rounded-t-lg h-72 object-cover" src={img} alt="" />
+          </PhotoView>
+        </PhotoProvider>
       </Link>
       <div className="p-5 ">
         <Link to="#">
