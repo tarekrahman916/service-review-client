@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -10,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(location);
+  usePageTitle("Login");
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -14,7 +14,7 @@ const ServiceDetails = () => {
   usePageTitle("Service Details");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
+    fetch(`http://localhost:5000/all-reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [_id]);

@@ -3,6 +3,8 @@ import TopBanner from "../TopBanner/TopBanner";
 import { Link, useLoaderData } from "react-router-dom";
 import ServiceCard from "../../Shared/ServiceCard/ServiceCard";
 import usePageTitle from "../../../hooks/usePageTitle";
+import AboutSection from "../AboutSection/AboutSection";
+import Newsletter from "../Newsletter/Newsletter";
 
 const Home = () => {
   const services = useLoaderData();
@@ -41,6 +43,8 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      <AboutSection />
+      <Newsletter></Newsletter>
     </div>
   );
 };

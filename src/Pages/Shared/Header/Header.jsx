@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import logo from "../../../assets/logo.png";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -14,13 +15,9 @@ const Header = () => {
     <nav className="bg-white border-gray-200 px-2 lg:mx-10 sm:px-4 py-5 rounded dark:bg-gray-900 ">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+          <img src={logo} className="mr-3 h-6 sm:h-16" alt="Logo" />
+          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white font-bold">
+            JOHN'S Photography
           </span>
         </Link>
         <div className="flex md:order-2">
