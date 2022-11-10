@@ -1,6 +1,6 @@
 # `JOHN'S Photography Starter Repository`
 
-This is an Educational Quizzes Website.
+This is a photographer Website.
 
 ## `Live Link`
 
