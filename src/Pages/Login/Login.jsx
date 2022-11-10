@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -29,7 +30,7 @@ const Login = () => {
         };
 
         //jwt
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://service-review-server-gold.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -43,9 +44,10 @@ const Login = () => {
           });
 
         navigate(from, { replace: true });
+        toast.success("Successfully login");
         form.reset();
       })
-      .catch((err) => console.error(err.message))
+      .catch((err) => toast.error(err.message))
       .finally(() => {
         setLoading(false);
       });

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ReviewTableRow = ({ review, handleDelete }) => {
+const ReviewTableRow = ({ review, handleDelete, user }) => {
   const { _id, service_name, text, author, ratings } = review;
   const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ const ReviewTableRow = ({ review, handleDelete }) => {
       </th>
       <td className="py-4 px-6">{text}</td>
       <td className="py-4 px-6">{ratings}</td>
+      <td className="py-4 px-6">{user?.displayName}</td>
 
       <td className="py-4 px-6">
         <button

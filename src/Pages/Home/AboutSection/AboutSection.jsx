@@ -3,7 +3,7 @@ import photo from "../../../assets/photo1.jpg";
 
 const AboutSection = () => {
   return (
-    <div className="grid md:grid-cols-2 mx-16 bg-slate-500 rounded-md text-white">
+    <div className="grid md:grid-cols-2 mx-2 md:mx-16 bg-slate-500 rounded-md text-white">
       <div className="p-10">
         <h2 className="text-4xl  font-bold">About us</h2>
         <p className="mt-8 text-gray-200">

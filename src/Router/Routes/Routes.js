@@ -21,12 +21,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () =>
+          fetch("https://service-review-server-gold.vercel.app/services"),
       },
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch("http://localhost:5000/allServices"),
+        loader: () =>
+          fetch("https://service-review-server-gold.vercel.app/all-services"),
       },
       {
         path: "/blog",
@@ -60,13 +62,17 @@ const router = createBrowserRouter([
         path: "/service/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://service-review-server-gold.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/review/update/:id",
         element: <ReviewUpdate></ReviewUpdate>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/review/${params.id}`),
+          fetch(
+            `https://service-review-server-gold.vercel.app/review/${params.id}`
+          ),
       },
     ],
   },

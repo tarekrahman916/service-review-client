@@ -1,5 +1,4 @@
 import React from "react";
-import banner from "../../../assets/banner.jpg";
 import profile from "../../../assets/profile.png";
 import Typical from "react-typical";
 

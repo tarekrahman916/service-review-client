@@ -1,36 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
     <div>
       <footer className="p-4  sm:p-6 bg-gray-900 text-white mt-5">
-        <div className="grid grid-cols-2 lg:grid-cols-4 justify-center  text-white">
+        <div className="grid grid-cols-1 lg:grid-cols-4 justify-center  text-white">
           <div className="mb-6 md:mb-0">
             <Link to="https://flowbite.com/" className="flex items-center">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="mr-3 h-8"
-                alt="FlowBite Logo"
-              />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                Flowbite
+                JOHN'S Photography
               </span>
             </Link>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold  uppercase text-white">
-              Resources
+              Services
             </h2>
             <ul className=" text-gray-400">
-              <li className="mb-4">
-                <Link to="/" className="hover:underline">
-                  Flowbite
+              <li className="mb-2">
+                <Link to="/services" className="hover:underline">
+                  WEDDING / ENGAGEMENT
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/services" className="hover:underline">
+                  FASHION / PERSONAL
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/services" className="hover:underline">
+                  BIRTHDAY Photography
                 </Link>
               </li>
               <li>
-                <Link to="/" className="hover:underline">
-                  Tailwind CSS
+                <Link to="/services" className="hover:underline">
+                  KIDS / NEW BORN & BABIES
                 </Link>
               </li>
             </ul>
@@ -48,12 +54,20 @@ const Footer = () => {
                   Github
                 </Link>
               </li>
-              <li>
+              <li className="mb-4">
                 <Link
-                  to="https://discord.gg/4eeurUVvTy"
+                  to="https://www.facebook.com/"
                   className="hover:underline"
                 >
-                  Discord
+                  Facebook
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="https://www.linkedin.com/"
+                  className="hover:underline"
+                >
+                  Linkdin
                 </Link>
               </li>
             </ul>
@@ -82,7 +96,7 @@ const Footer = () => {
           <span className="text-sm  sm:text-center text-gray-200">
             © 2022{" "}
             <Link to="/" className="hover:underline">
-              Flowbite™
+              JOHN'S Photography™
             </Link>
             . All Rights Reserved.
           </span>

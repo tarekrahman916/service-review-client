@@ -12,11 +12,14 @@ const MyReviews = () => {
   usePageTitle("Review");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `https://service-review-server-gold.vercel.app/reviews?email=${email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 402) {
           alert("Unauthorized Access");
@@ -26,19 +29,21 @@ const MyReviews = () => {
       })
       .then((data) => {
         setMyReviews(data);
-        // console.log(data);
+        console.log(data);
       });
   }, [email]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://service-review-server-gold.vercel.app/reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         const remaining = myReviews.filter((review) => review._id !== id);
         setMyReviews(remaining);
-      });
+        toast.success("Deleted this review");
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   return (
@@ -60,6 +65,9 @@ const MyReviews = () => {
               <th scope="col" className="py-3 px-6">
                 Ratings
               </th>
+              <th scope="col" className="py-3 px-6">
+                Author
+              </th>
 
               <th scope="col" className="py-3 px-6">
                 Action
@@ -71,6 +79,7 @@ const MyReviews = () => {
               <ReviewTableRow
                 key={review._id}
                 review={review}
+                user={user}
                 handleDelete={handleDelete}
               ></ReviewTableRow>
             ))}

@@ -14,7 +14,9 @@ const ServiceDetails = () => {
   usePageTitle("Service Details");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/all-reviews?serviceId=${_id}`)
+    fetch(
+      `https://service-review-server-gold.vercel.app/all-reviews?serviceId=${_id}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [_id]);
@@ -35,7 +37,7 @@ const ServiceDetails = () => {
       service_id: _id,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://service-review-server-gold.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -86,7 +88,7 @@ const ServiceDetails = () => {
           {user?.uid ? (
             <form
               onSubmit={handleAddReview}
-              className="w-1/2 mx-auto bg-gray-800 p-10 rounded-md mb-5"
+              className="md:w-1/2 mx-auto bg-gray-800 p-10 rounded-md mb-5"
             >
               <label
                 htmlFor="text"

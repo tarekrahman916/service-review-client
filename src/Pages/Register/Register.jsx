@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -22,9 +23,10 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         handleUpdateUserProfile(name, photoURL);
+        toast.success("Successfully Sign Up");
         form.reset();
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   const handleUpdateUserProfile = (name, photoURL) => {

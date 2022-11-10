@@ -15,13 +15,16 @@ const ReviewUpdate = () => {
 
     console.log(editedReview);
 
-    fetch(`http://localhost:5000/review/${review._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(editedReview),
-    })
+    fetch(
+      `https://service-review-server-gold.vercel.app/review/${review._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(editedReview),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

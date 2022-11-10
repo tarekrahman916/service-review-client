@@ -1,9 +1,11 @@
 import React from "react";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 
 const AddService = () => {
   usePageTitle("Add Service");
+
   const handleAddService = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +24,7 @@ const AddService = () => {
     };
 
     console.log(service);
-    fetch("http://localhost:5000/services", {
+    fetch("https://service-review-server-gold.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,8 +34,9 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         form.reset();
+        toast.success("Service successfully added");
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   return (
